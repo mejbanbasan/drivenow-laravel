@@ -13,3 +13,4 @@ Route::get('/register', [PageController::class, 'register'])->name('register');
 Route::get('/how-it-works', [PageController::class, 'howItWorks'])->name('how-it-works');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/booking/invoice/{id}', [PageController::class, 'invoice'])->name('booking.invoice');

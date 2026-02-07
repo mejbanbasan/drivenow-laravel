@@ -68,10 +68,12 @@
 
         <!-- Actions -->
         <div class="flex flex-col sm:flex-row gap-4">
-            <button class="flex-1 gap-2 flex items-center justify-center btn-glow h-10 rounded-lg bg-primary text-primary-foreground font-medium">
-                <i data-lucide="download" class="w-4 h-4"></i>
-                Download Invoice
-            </button>
+            <a href="{{ route('booking.invoice', ['id' => request('car_id', 1), 'booking_id' => request('booking_id')]) }}" target="_blank" class="flex-1">
+                <button class="w-full gap-2 flex items-center justify-center btn-glow h-10 rounded-lg bg-primary text-primary-foreground font-medium">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    Download Invoice
+                </button>
+            </a>
             <a href="{{ route('home') }}" class="flex-1">
                 <button class="w-full gap-2 flex items-center justify-center h-10 rounded-lg bg-secondary text-foreground hover:bg-secondary/80 font-medium transition-colors">
                     <i data-lucide="home" class="w-4 h-4"></i>

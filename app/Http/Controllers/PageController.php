@@ -188,4 +188,13 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function invoice($id)
+    {
+        $car = collect($this->cars)->firstWhere('id', $id);
+        if (!$car) {
+             $car = $this->cars[0];
+        }
+        return view('booking.invoice', ['car' => $car]);
+    }
 }

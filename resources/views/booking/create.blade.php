@@ -141,14 +141,14 @@
                                 <label class="text-sm font-medium mb-2 block">First Name</label>
                                 <div class="relative">
                                     <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
-                                    <input type="text" placeholder="Enter first name" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
+                                    <input type="text" id="firstName" placeholder="Enter first name" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
                                 </div>
                             </div>
                             <div>
                                 <label class="text-sm font-medium mb-2 block">Last Name</label>
                                 <div class="relative">
                                     <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
-                                    <input type="text" placeholder="Enter last name" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
+                                    <input type="text" id="lastName" placeholder="Enter last name" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
                                 </div>
                             </div>
                         </div>
@@ -157,14 +157,14 @@
                                 <label class="text-sm font-medium mb-2 block">Email Address</label>
                                 <div class="relative">
                                     <i data-lucide="mail" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
-                                    <input type="email" placeholder="Enter email" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
+                                    <input type="email" id="email" placeholder="Enter email" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
                                 </div>
                             </div>
                             <div>
                                 <label class="text-sm font-medium mb-2 block">Phone Number</label>
                                 <div class="relative">
                                     <i data-lucide="phone" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
-                                    <input type="tel" placeholder="Enter phone number" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
+                                    <input type="tel" id="phone" placeholder="Enter phone number" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                             <label class="text-sm font-medium mb-2 block">Driving License Number</label>
                             <div class="relative">
                                 <i data-lucide="credit-card" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
-                                <input type="text" placeholder="Enter driving license number" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
+                                <input type="text" id="license" placeholder="Enter driving license number" class="pl-10 h-12 w-full input-premium rounded-lg bg-secondary border-white/10">
                             </div>
                         </div>
                     </div>
@@ -396,8 +396,19 @@
                 updateSteps();
                 updatePrice(); // specifically for button text
             } else {
-                // Submit - Redirect to confirmation
-                window.location.href = "{{ route('booking.confirmation') }}?booking_id=BK-" + Date.now();
+                // Submit - Redirect to confirmation with data
+                const params = new URLSearchParams({
+                    booking_id: "BK-" + Date.now(),
+                    car_id: "{{ $car['id'] }}",
+                    name: document.getElementById('firstName').value + " " + document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    pickupBy: document.getElementById('pickupLocation').value,
+                    pickupDate: document.getElementById('pickupDate').value,
+                    returnDate: document.getElementById('returnDate').value,
+                    amount: summaryTotal.textContent.replace('₹', '')
+                });
+                window.location.href = "{{ route('booking.confirmation') }}?" + params.toString();
             }
         });
 

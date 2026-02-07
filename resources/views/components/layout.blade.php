@@ -177,6 +177,15 @@
                     <a href="{{ route('cars.index') }}" class="px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('cars.*') ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary' }}">
                         Browse Cars
                     </a>
+                    <a href="{{ route('how-it-works') }}" class="px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('how-it-works') ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary' }}">
+                        How It Works
+                    </a>
+                    <a href="{{ route('about') }}" class="px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('about') ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary' }}">
+                        About
+                    </a>
+                    <a href="{{ route('contact') }}" class="px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary' }}">
+                        Contact
+                    </a>
                     <div class="flex gap-2 mt-4">
                         <a href="{{ route('login') }}" class="flex-1 text-center border border-input bg-background hover:bg-accent hover:text-accent-foreground px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                             Sign In
